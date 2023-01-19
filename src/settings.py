@@ -38,8 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
-    'rest_framework'
+    'frontend',
+    'rest_framework',
+    'corsheaders',
 ]
+
+# DJANGO REST_FRAMEWORK Settings add_by_myself
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES":[
+            'rest_framework.permissions.IsAdminUser',
+        ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,7 +58,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+# cors settings
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:3000',
+]
+
+CSRF_TRUSTED_ORIGIN = [
+    'http://127.0.0.1:3000',
+]
+# cors settings
 
 ROOT_URLCONF = 'src.urls'
 
